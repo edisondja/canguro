@@ -9,7 +9,7 @@
     <form method="POST" enctype="multipart/form-data">
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="title" aria-describedby="emailHelp" placeholder="Enter email">
+          <input type="email" class="form-control" id="exampleInputEmail1" name="title" aria-describedby="emailHelp" placeholder="title post">
           <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group">
