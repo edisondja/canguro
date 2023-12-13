@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('type_post');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->boolean("status")->default(1);
             $table->unsignedBigInteger('category');
             $table->foreign('category')->references('id')->on('categories');
             $table->timestamps();

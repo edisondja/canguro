@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +40,5 @@ Route::get('/register',function(){
 
 
 Route::post('/register_user',[RegisterController::class,'create'])->name('register_user');
+
+Route::get('/dashboard',[Dashboard::class,'index'])->name("dashboard");
