@@ -6,23 +6,23 @@
 <div class="col-md-5">
     <h3 style="text-align: center">Make your Post</h3>
 
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" action="post_create">
+        @csrf
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" name="title" aria-describedby="emailHelp" placeholder="title post">
-          <small id="emailHelp" class="form-text text-muted"></small>
+          <input type="text" class="form-control"  name="title"  placeholder="title post">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Description</label>
-          <textarea type="password" class="form-control" rows="8"></textarea>
+          <textarea type="text" name="text"  class="form-control" rows="8"></textarea>
         </div>
         <div class="form-group">
             
             <label for="exampleInputPassword1">Select Category</label>
-                <select name="category" id="" class="form-control">
-                        <option value="">Hystory</option>
-                        <option value="">Science</option>
-                        <option value="">Software</option>
+                <select name="category"  class="form-control">
+                   @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}} / {{$category->description}}</option>
+                   @endforeach
                 </select>
           </div>
         <hr>

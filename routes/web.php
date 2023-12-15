@@ -48,11 +48,12 @@ Route::get('/dashboard',[Dashboard::class,'index'])->name("dashboard");
 
 //Post controller
 
-Route::post('/post_create',[[PostController::class,'create']])->name('post_create');
+Route::post('/post_create',[PostController::class,'create'])->name('post_create')->middleware("auth");
 Route::post('/post_update',[PostController::class,'update'])->name('post_update');
 Route::post('/post_disable',[PostController::class,'disable'])->name('post_disable');
 Route::get('/my_posts/{user_id}',[PostController::class,'my_posts'])->name('my_posts');
 Route::get('/show_posts',[PostController::class,'showpots'])->name('show_posts');
+Route::get('/search_post',[PostController::class,'search_post'])->name("search_post");
 
 
 //Coment 
@@ -66,3 +67,5 @@ Route::post('/category_create',[CategoryController::class,'create'])->name("cate
 Route::post('/update_category/{id}',[CategoryController::class,'update'])->name("update_category");
 Route::post('/category_disable/{id}',[CategoryController::class,'disable'])->name("category_create");
 Route::get('/show_categories',[CategoryController::class,'showCategories'])->name("category_create");
+Route::get('/show_category_from_post',[CategoryController::class,'show_category_from_post'])->name("show_category_from_post");
+Route::get('/search_category',[CategoryController::class,'search']);

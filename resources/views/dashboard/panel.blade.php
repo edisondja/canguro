@@ -30,6 +30,9 @@
                     <a class="nav-link" href="#">Create Category</a>
                   </li>
                   <li class="nav-item">
+                    <a class="nav-link" href="#">Create Statistics</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="#">Transfer content form reddit</a>
                   </li>
                   <li class="nav-item">
