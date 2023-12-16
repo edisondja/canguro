@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\DB;
 
 class PostController extends Controller
 {
@@ -28,7 +29,7 @@ class PostController extends Controller
 
             $file = $request->file("media");
             $fileName = $file->getClientOriginalName();
-            $url = Storage::disk('public')->put("images/".$fileName,$file);
+            $url = Storage::disk('public')->put("/".$fileName,$file);
             $post->file_url = $url; 
         }
         $post->description = $request->input("text");
@@ -40,6 +41,23 @@ class PostController extends Controller
     }
 
 
+    public function mypost($user_id){
+        
+
+
+    $post = Post::find($user_id);
+
+    }
+
+
+    public function ShowPosts(){
+    
+       $posts = DB::table('posts')->limit(25)->get();
+      
+      
+        return view
+
+    }
     public function update(Request $request){
 
         $post = Post::find($request->id);
