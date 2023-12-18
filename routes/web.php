@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +41,7 @@ Route::get('/register',function(){
 
 Route::post('/register_user',[RegisterController::class,'create'])->name('register_user');
 
-Route::get('/dashboard',[Dashboard::class,'index'])->name("dashboard");
+Route::get('/dashboard',[Dashboard::class,'index'])->name("dashboard")->middleware("auth");
 
 
 //Post controller
@@ -66,3 +67,8 @@ Route::post('/category_disable/{id}',[CategoryController::class,'disable'])->nam
 Route::get('/show_categories',[CategoryController::class,'showCategories'])->name("category_create");
 Route::get('/show_category_from_post',[CategoryController::class,'show_category_from_post'])->name("show_category_from_post");
 Route::get('/search_category',[CategoryController::class,'search']);
+
+
+//Setting                            
+Route::get('/dashboard/settings/{user_id}',[SettingController::class,'show'])->name('settings');
+Route::post('/settings_update',[SettingController::class,'show'])->name('settings_update');

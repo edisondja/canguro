@@ -18,7 +18,7 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Inicio</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Forums</a>
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="#">Transfer content form reddit</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
+                    <a class="nav-link" href="/dashboard/settings/{{Auth::user()->id}}">Settings</a>
                   </li>
                 </ul>
               </div>
