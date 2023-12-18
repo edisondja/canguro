@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/{search}', [PostController::class,'ShowPosts'])->name('home');
+Route::get('/', [PostController::class,'ShowPosts'])->name('home');
 
 Route::get('/login',function(){
     

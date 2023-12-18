@@ -27,10 +27,13 @@ class PostController extends Controller
   
         if($request->hasFile("media")){
 
-            $file = $request->file("media");
+            $file = $request->file('media');
             $fileName = $file->getClientOriginalName();
-            $url = Storage::disk('public')->put("/".$fileName,$file);
-            $post->file_url = $url; 
+            // Modifica la ruta para guardar en la carpeta 'imagen' dentro del disco público
+            $url = Storage::disk('public')->put('imagen/' . $fileName, $file);
+            // Asigna la URL al modelo o hace lo que sea necesario con la URL
+            $post->file_url = $url;
+        
         }
         $post->description = $request->input("text");
         $post->type_post = "image";
@@ -50,12 +53,12 @@ class PostController extends Controller
     }
 
 
-    public function ShowPosts(){
-    
-       $posts = DB::table('posts')->limit(25)->get();
+    public function ShowPosts($search=""){
+   
+        $posts= Post::latest()->where('status','!=',0)->limit(25)->get();
+
       
-      
-        return view
+        return view("feed")->with('posts',$posts);
 
     }
     public function update(Request $request){

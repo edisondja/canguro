@@ -2,18 +2,48 @@
 
 
 @section('content')
+
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-5">
-                <h3>Los mejores ganadores del mundo</h3>
-                <img  class="img-fluid" src="https://images.contentstack.io/v3/assets/blt93c07aad6c2c008a/blt0a7ac4d15122818b/63ea6f3e2e12fd76c1dd128f/Jayce_2.jpg?auto=webp&width=1920&height=1080"
-                    style="width:640px;height:480px" alt="">
-                <table class="">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
+            <form method="GET"  action="/post_search">
+                <input type="search" name="context" class="form-control" placeholder="search more super content">
+            </form>
+            <hr>
+
+
+            @foreach($posts as $post)
+
+                    <div class="card tweet-box">
+                        <div class="card-body">
+                            <div class="media">
+                                <a href="/profile-user/{{$post->user->name}}">
+                                    <img src="" class="mr-3 rounded-circle" alt="Avatar" style="width: 60px;">
+                                </a>
+                               
+                                <div class="media-body">
+                                    <h5 class="mt-0">{{$post->title}}</h5>
+                                    <p>{{$post->user->name}}</p>
+                                    <p>
+                                        <img src="storage/{{$post->file_url}}" class="img-fluid" alt="{{$post->title}}" >
+                                        {{$post->description}}
+                                    </p>
+                                    <!-- Aquí puedes añadir imágenes, enlaces, etc. -->
+                                    <div class="interaction-icons">
+                                        <i class="far fa-comment"></i>
+                                        <i class="fas fa-retweet"></i>
+                                        <i class="far fa-heart"></i>
+                                        <i class="far fa-share-square"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><br>
+
+            @endforeach
+          
+        
         </div>
+        
     </div>
 @endsection
