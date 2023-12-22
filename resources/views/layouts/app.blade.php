@@ -52,10 +52,23 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  
+                                   @if(Auth::check())
+
+                                    <img src="{{Session::get('picture_profile')}}"  class="rounded-circle img-fluid"  alt="" width="50">
+                                  
+                                  @endif
+
                                     {{ Auth::user()->name }}
+
+
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="{{route('dashboard')}}">
+                                        dashboard
+                                    </a>    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

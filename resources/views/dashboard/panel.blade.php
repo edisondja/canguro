@@ -36,7 +36,7 @@
                     <a class="nav-link" href="#">Transfer content form reddit</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dashboard/settings/{{Auth::user()->id}}">Settings</a>
+                    <a class="nav-link" href="/dashboard/settings">Settings</a>
                   </li>
                 </ul>
               </div>

@@ -18,16 +18,21 @@
                         <div class="card-body">
                             <div class="media">
                                 <a href="/profile-user/{{$post->user->name}}">
-                                    <img src="" class="mr-3 rounded-circle" alt="Avatar" style="width: 60px;">
+                                    <img src="storage/{{$post->user->config->picture_url}}" class="mr-3 rounded-circle" alt="Avatar" style="width: 60px;">
                                 </a>
-                               
+                            
                                 <div class="media-body">
                                     <h5 class="mt-0">{{$post->title}}</h5>
                                     <p>{{$post->user->name}}</p>
-                                    <p>
-                                        <img src="storage/{{$post->file_url}}" class="img-fluid" alt="{{$post->title}}" >
-                                        {{$post->description}}
-                                    </p>
+                                  
+                                       <a href="content/{{$post->id}}">
+                                            <img src="storage/{{$post->file_url}}" class="img-fluid"  alt="{{$post->title}}" >
+                                          
+                                        </a>
+                                       
+                                        <p>
+                                            {{$post->description}}
+                                        </p>
                                     <!-- Aquí puedes añadir imágenes, enlaces, etc. -->
                                     <div class="interaction-icons">
                                         <i class="far fa-comment"></i>

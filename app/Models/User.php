@@ -23,6 +23,13 @@ class User extends Authenticatable
     }
     
 
+    public function config()  {
+
+
+        return $this->hasOne(Setting::class);
+
+    }
+
     /**
      * The attributes that are mass assignable.
      *

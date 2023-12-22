@@ -12,7 +12,14 @@ class PostController extends Controller
 {
     
  
-    public function index(){
+    public function index($post_id){
+
+
+       $post = Post::find($post_id);
+       $comments = $post->coments;
+
+       return view("single-post")->with("post", $post)->with("comments", $comments);
+
 
 
     }
@@ -37,7 +44,9 @@ class PostController extends Controller
         }
         $post->description = $request->input("text");
         $post->type_post = "image";
-        $post->save();
+        $post->save();  
+
+        return redirect('/dashboard');
         
     
 

@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
+
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -48,7 +52,10 @@ class LoginController extends Controller
   
          if (Auth::attempt($credentials)) {
              $request->session()->regenerate();
-  
+
+            $picture_url = User::find($request->user()->id);
+            $picture_url = $picture_url->config->picture_url;
+            Session::put('picture_profile','../storage/'.$picture_url);
              return redirect()->intended('dashboard');
          }
   

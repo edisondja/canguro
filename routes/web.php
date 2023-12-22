@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [PostController::class,'ShowPosts'])->name('home');
+Route::get('/content/{post_id}', [PostController::class,'index'])->name('content');
 
 Route::get('/login',function(){
     
@@ -70,5 +71,5 @@ Route::get('/search_category',[CategoryController::class,'search']);
 
 
 //Setting                            
-Route::get('/dashboard/settings/{user_id}',[SettingController::class,'show'])->name('settings');
-Route::post('/settings_update',[SettingController::class,'show'])->name('settings_update');
+Route::get('/dashboard/settings',[SettingController::class,'show'])->name('settings');
+Route::post('settings_create',[SettingController::class,'create'])->name('settings_create')->middleware('auth');
