@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\DB;
 
@@ -23,6 +24,30 @@ class PostController extends Controller
 
 
     }
+    public function show_post_id($post_id){
+
+        $post = Post::find($post_id);
+        $categories = Category::all();
+
+        return view("update-post")->with("post", $post)->with("post", $post)->with('categories',$categories);
+
+
+    }
+
+
+    public function my_posts(){ 
+        $post = Post::where('user_id',Auth::user()->id)->get();
+
+        return view('my-posts')->with('posts', $post);
+    }
+
+
+    public function update_post(Request $request){
+
+        $post = Post::find($request->post_id);
+
+    }
+
 
     public function create(Request $request){
 
@@ -75,7 +100,17 @@ class PostController extends Controller
         $post = Post::find($request->id);
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->type = $request->type;
+        if($request->hasFile("media")){
+
+            $file = $request->file('media');
+            $fileName = $file->getClientOriginalName();
+            // Modifica la ruta para guardar en la carpeta 'imagen' dentro del disco público
+            $url = Storage::disk('public')->put('imagen/' . $fileName, $file);
+            // Asigna la URL al modelo o hace lo que sea necesario con la URL
+            $post->file_url = $url;
+        
+        }
+
         $post->user_id = $request->user_id;
         $post->save();
 

@@ -14,7 +14,7 @@
 
             @foreach($posts as $post)
 
-                    <div class="card tweet-box">
+                    <div class="">
                         <div class="card-body">
                             <div class="media">
                                 <a href="/profile-user/{{$post->user->name}}">
@@ -26,7 +26,7 @@
                                     <p>{{$post->user->name}}</p>
                                   
                                        <a href="content/{{$post->id}}">
-                                            <img src="storage/{{$post->file_url}}" class="img-fluid"  alt="{{$post->title}}" >
+                                            <img src="storage/{{$post->file_url}}"  class="img-fluid reddit-form-image"  alt="{{$post->title}}" >
                                           
                                         </a>
                                        
@@ -52,3 +52,15 @@
         
     </div>
 @endsection
+
+<style>
+    /* Estilos para la imagen en formato Reddit en el formulario */
+.reddit-form-image {
+    max-width: 100%;
+    height: auto;
+ 
+    border-radius: 4px;
+    /* Define un tamaño máximo para la imagen en el formulario */
+    max-height: 300px; /* Puedes ajustar este valor según lo necesites */
+}
+</style>
