@@ -13,38 +13,58 @@
 
 
             @foreach($posts as $post)
-
-                    <div class="">
+           {{--
+            <div class="card tweet-box">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <a href="/profile-user/{{$post->user->name}}">
+                            <img src="storage/{{$post->user->config->picture_url}}" class="card-img rounded-circle" width="60" alt="Avatar">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
                         <div class="card-body">
-                            <div class="media">
-                                <a href="/profile-user/{{$post->user->name}}">
-                                    <img src="storage/{{$post->user->config->picture_url}}" class="mr-3 rounded-circle" alt="Avatar" style="width: 60px;">
-                                </a>
-                            
-                                <div class="media-body">
-                                    <h5 class="mt-0">{{$post->title}}</h5>
-                                    <p>{{$post->user->name}}</p>
-                                  
-                                       <a href="content/{{$post->id}}">
-                                            <img src="storage/{{$post->file_url}}"  class="img-fluid reddit-form-image"  alt="{{$post->title}}" >
-                                          
-                                        </a>
-                                       
-                                        <p>
-                                            {{$post->description}}
-                                        </p>
-                                    <!-- Aquí puedes añadir imágenes, enlaces, etc. -->
-                                    <div class="interaction-icons">
-                                        <i class="far fa-comment"></i>
-                                        <i class="fas fa-retweet"></i>
-                                        <i class="far fa-heart"></i>
-                                        <i class="far fa-share-square"></i>
-                                    </div>
-                                </div>
+                            <h5 class="card-title">{{$post->title}}</h5>
+                            <p class="card-text">{{$post->user->name}}</p>
+                            <a href="content/{{$post->id}}">
+                                <img src="storage/{{$post->file_url}}" class="card-img-top img-fluid" style="height: 180px; width:380px;" alt="{{$post->title}}">
+                            </a>
+                            <p class="card-text">
+                                {{$post->description}}
+                            </p>
+                            <div class="interaction-icons">
+                                <i class="far fa-comment"></i>
+                                <i class="fas fa-retweet"></i>
+                                <i class="far fa-heart"></i>
+                                <i class="far fa-share-square"></i>
                             </div>
                         </div>
-                    </div><br>
+                    </div>
+                </div>
+            </div>
 
+       --}}
+
+       <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="storage/{{$post->file_url}}" class="card-img" alt="{{$post->title}}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{$post->title}}</h5>
+                    <p class="card-text">{{Str::limit($post->description,20)}}</p>
+                    <p class="card-text"><small class="text-muted">{{$post->created_at}}</small></p>
+                    <p class="card-text" style="float: right"><img src="storage/{{$post->user->config->picture_url}}" class="card-img rounded-circle" style="height: 50px; width:50px;" alt="Avatar">
+                        {{$post->user->name}}
+                    </p>
+
+                    <a href="/profile-user/{{$post->user->name}}">
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
             @endforeach
           
         
@@ -52,15 +72,3 @@
         
     </div>
 @endsection
-
-<style>
-    /* Estilos para la imagen en formato Reddit en el formulario */
-.reddit-form-image {
-    max-width: 100%;
-    height: auto;
- 
-    border-radius: 4px;
-    /* Define un tamaño máximo para la imagen en el formulario */
-    max-height: 300px; /* Puedes ajustar este valor según lo necesites */
-}
-</style>
