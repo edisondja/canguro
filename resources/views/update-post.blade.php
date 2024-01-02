@@ -8,7 +8,7 @@
 
     <form method="POST" enctype="multipart/form-data" action="/update_post">
         @csrf
-        <input type="hidden" value="{{$post->id}}" name="user_id">
+        <input type="hidden" value="{{$post->id}}" name="id">
         <div class="form-group">
           <label for="exampleInputEmail1">Title</label>
           <input type="text" class="form-control"  name="title" value="{{$post->title}}"  placeholder="title post">

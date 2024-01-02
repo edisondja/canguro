@@ -25,6 +25,7 @@ Route::get('/content/{post_id}', [PostController::class,'index'])->name('content
 Route::get('/dashboard/my_posts', [PostController::class,'my_posts'])->name('my_posts')->middleware('auth');
 Route::get('/update_post_show/{post_id}',[PostController::class,'show_post_id'])->name('update_post_show')->middleware('auth');
 Route::post('/update_post',[PostController::class,'update'])->name('update_post')->middleware('auth');
+Route::get('/dashboard/search_my_posts/{title}',[PostController::class,'search_my_posts'])->name('search_my_posts')->middleware('auth');
 
 
 Route::get('/login',function(){

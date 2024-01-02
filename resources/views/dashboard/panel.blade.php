@@ -24,7 +24,7 @@
                     <a class="nav-link" href="#">Forums</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">My Posts</a>
+                    <a class="nav-link" href="/dashboard/my_posts">My Posts</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Create Category</a>

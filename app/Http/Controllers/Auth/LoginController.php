@@ -54,7 +54,16 @@ class LoginController extends Controller
              $request->session()->regenerate();
 
             $picture_url = User::find($request->user()->id);
-            $picture_url = $picture_url->config->picture_url;
+            
+            if(isset($picture_url->config->picture_url)){
+
+                $picture_url = $picture_url->config->picture_url;
+            
+            }else{
+
+               $picture_url =  '../storage/'.asset('images/user.png');
+            }
+            
             Session::put('picture_profile','../storage/'.$picture_url);
              return redirect()->intended('dashboard');
          }
@@ -73,6 +82,9 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+
+        Session::forget('picture_profile');
+
         Auth::logout();
 
         return redirect('/');

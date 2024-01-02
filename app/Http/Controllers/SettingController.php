@@ -19,37 +19,26 @@ class SettingController extends Controller
       $setting = User::find(Auth::user()->id);
 
 
-        if($setting->count() > 0) {
+          if(isset($setting->config) ) {
 
-           $setting = $setting->config;
-        
-        }else{
+            $setting = $setting->config;
+           
+          }else{
 
-            
-                $setting= [
-                    'profession'=>'',
-                    'address'=>'',
-                    'birthdate'=>'',
-                    'picture_url'=>''
-                    
-
-                ];
-
-        }
-
-
-        $setting =  (object) $setting;
-        /*
-        if($setting == "") {
-
-            return dd( $setting );
 
             $setting = new Setting();
-            $setting->user_id = $user_id;
+            $setting->user_id = Auth::user()->id;
+            $setting->picture_url = 'none';
+            $setting->address = 'none';
+            $setting->birthday =date('Y-m-d');
+            $setting->profession = 'none';
+
             $setting->save();
-            
-        }
-        */
+
+          }
+       
+
+
         return view("user-settings")->with("settings", $setting);
  
 

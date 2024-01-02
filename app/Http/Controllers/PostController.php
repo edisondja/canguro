@@ -24,6 +24,24 @@ class PostController extends Controller
 
 
     }
+
+
+
+    public function search_my_posts($title){
+
+
+
+        $userID = Auth::user()->id;
+        $posts = Post::where('user_id', $userID)
+                    ->where('title', 'like', "%$title%")
+                    ->orderBy("created_at", "desc")
+                    ->get();
+        
+        return view('my-posts', compact('posts'));
+
+    }
+
+
     public function show_post_id($post_id){
 
         $post = Post::find($post_id);
@@ -80,9 +98,7 @@ class PostController extends Controller
 
     public function mypost($user_id){
         
-
-
-    $post = Post::find($user_id);
+        $post = Post::find($user_id);
 
     }
 
@@ -100,6 +116,7 @@ class PostController extends Controller
         $post = Post::find($request->id);
         $post->title = $request->title;
         $post->description = $request->description;
+        $post->category_id = $request->category;
         if($request->hasFile("media")){
 
             $file = $request->file('media');
@@ -111,9 +128,10 @@ class PostController extends Controller
         
         }
 
-        $post->user_id = $request->user_id;
         $post->save();
 
+
+        return redirect('/dashboard/my_posts');
 
     }
 

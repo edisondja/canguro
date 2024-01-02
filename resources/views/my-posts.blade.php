@@ -3,11 +3,14 @@
 
 @section('control-mode')
 
-    <div class="col-md-4">
-        
+    <div class="col-md-8">
 
         <h3>My Posts</h3><hr>
-        <input type="search" class="form-control" placeholder="write the title for search posts"><hr>
+        <form method="GET" action="{{route('search_my_posts','title')}}">
+            
+            <input type="search" name="title"   class="form-control" placeholder="write the title for search posts"><hr>
+
+        </form>
 
         <table class="table">
                 <tr>
